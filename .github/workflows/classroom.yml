@@ -82,5 +82,4 @@ jobs:
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        # 确保这些变量值是逗号分隔的
         TC_RESULTS: "${{steps.tc01.outputs.result}},${{steps.tc02.outputs.result}},${{steps.tc03.outputs.result}},${{steps.tc04.outputs.result}},${{steps.tc05.outputs.result}}"
