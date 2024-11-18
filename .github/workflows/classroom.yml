@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+
     - name: TC01
       id: tc01
       uses: classroom-resources/autograding-io-grader@v1
@@ -87,5 +87,5 @@ jobs:
         TC03_RESULTS: "${{steps.tc03.outputs.result}}"
         TC04_RESULTS: "${{steps.tc04.outputs.result}}"
         TC05_RESULTS: "${{steps.tc05.outputs.result}}"
-        # 合并多个测试结果为逗号分隔的字符串
-        RESULTS_LIST: "TC01_RESULTS,TC02_RESULTS,TC03_RESULTS,TC04_RESULTS,TC05_RESULTS"
+        # 确保所有环境变量的值是逗号分隔的字符串
+        ALL_RESULTS: "TC01_RESULTS,TC02_RESULTS,TC03_RESULTS,TC04_RESULTS,TC05_RESULTS"
