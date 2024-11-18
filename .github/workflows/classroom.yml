@@ -1,7 +1,7 @@
 name: Autograding Tests
 'on':
-- push
-- repository_dispatch
+  - push
+  - repository_dispatch
 permissions:
   checks: write
   actions: read
@@ -81,5 +81,3 @@ jobs:
         TC03_RESULTS: "${{steps.tc03.outputs.result}}"
         TC04_RESULTS: "${{steps.tc04.outputs.result}}"
         TC05_RESULTS: "${{steps.tc05.outputs.result}}"
-      with:
-        runners: tc01,tc02,tc03,tc04,tc05
