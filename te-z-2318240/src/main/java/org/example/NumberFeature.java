@@ -4,29 +4,21 @@ import java.util.Scanner;
 
 public class NumberFeature {
     public static void main(String[] args) {
-        // 从标准输入读取整行字符串
+        int inputNumber; // 输入的数字
+        int result = 0;  // 最终的二进制结果
         Scanner in = new Scanner(System.in);
-        String inputNumberStr = in.nextLine().trim();  // 读取一行并去除空白
+        inputNumber = in.nextInt(); // 读取输入的数字
 
-        int result = 0;  // 存储结果的十进制值
-        int position = 1; // 数位，从个位开始
+        int position = 1; // 从个位开始
+        while (inputNumber > 0) {
+            int digit = inputNumber % 10; // 获取当前的个位数字
+            inputNumber /= 10; // 移除最后一位数字
 
-        // 从右到左遍历输入的数字字符
-        for (int i = inputNumberStr.length() - 1; i >= 0; i--) {
-            // 获取当前位的数字字符
-            char digitChar = inputNumberStr.charAt(i);
-            int digit = digitChar - '0'; // 转换字符到数字
-
-            // 判断数字和数位的奇偶性是否一致
-            boolean isDigitOdd = (digit % 2 != 0); // 数字是否奇数
-            boolean isPositionOdd = (position % 2 != 0); // 数位是否奇数
-
-            // 如果一致，则在结果中加上当前位的二进制值
-            if (isDigitOdd == isPositionOdd) {
-                result += (1 << (position - 1)); // 使用位运算计算二进制位
+            // 判断数字和位置的奇偶性是否一致
+            if ((digit % 2 == position % 2)) {
+                result += (1 << (position - 1)); // 位置从1开始，2的幂表示当前位的二进制值
             }
-
-            position++; // 数位递增
+            position++; // 数位加1
         }
 
         // 输出结果
